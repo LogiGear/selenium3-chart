@@ -148,6 +148,15 @@ hub:
     #  - secretName: selenium-hub-tls
     #    hosts:
     #      - selenium-hub.local
+  
+  # Place to store customized plugin
+  pluginVolume:
+    enabled: false
+    ## Use an existing claim or create a new one (then download your plugins by the initContainer) 
+    # existingClaim: 
+    # annotations: {}
+    # storageSize: 10Mi
+    # storageClass: "-"
 
 
 chrome:

@@ -2,6 +2,7 @@
 
 ## MAINTENANCE NOTICE
 
+- [2021-03-12]
 This chart is cloned from a deprecated chart at [Stable Helm repo](https://github.com/helm/charts/tree/master/stable/selenium), and continued developing by LogiGear EPG Dept. 
 Since Selenium 4 is still under beta phase and not ready for production yet, this would help any of us, who want to have a "Helm way" to deploy Selenium 3 Grid to Kubernetes Cluster.
 

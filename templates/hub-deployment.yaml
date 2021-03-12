@@ -102,8 +102,19 @@ spec:
             {{- if .Values.hub.extraEnvs }}
 {{ toYaml .Values.hub.extraEnvs | indent 12 }}
             {{- end }}
+          {{- if .Values.hub.pluginVolume.enabled }}
+          volumeMounts:
+            - mountPath: /opt/selenium/plugins
+              name: {{ template "selenium.hub.fullname" . }}-plugins
+          {{- end }}
           resources:
 {{ toYaml .Values.hub.resources | trim | indent 12 -}}
+      {{- if .Values.hub.pluginVolume.enabled }}
+      volumes:
+        - name: {{ template "selenium.hub.fullname" . }}-plugins
+          persistentVolumeClaim:
+            claimName: {{ .Values.hub.pluginVolume.existingClaim | default (printf "%s-%s" (include "selenium.hub.fullname" .) "plugins") }}
+      {{- end }}
 {{- if or .Values.global.imagePullSecrets .Values.hub.imagePullSecrets }}
       imagePullSecrets:
       - name: {{ .Values.hub.imagePullSecrets | default .Values.global.imagePullSecrets | quote }}

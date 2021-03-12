@@ -1,0 +1,30 @@
+{{- if and .Values.hub.pluginVolume.enabled (not .Values.hub.pluginVolume.existingClaim) }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ template "selenium.hub.fullname" . }}-plugins
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    {{- if .Values.hub.labels }}
+      {{- with .Values.hub.labels }}
+        {{ toYaml . | indent 4 }}
+      {{- end }}
+    {{- end }}
+{{- if .Values.hub.pluginVolume.annotations }}
+  annotations:
+{{ toYaml .Values.hub.pluginVolume.annotations | indent 4 }}
+{{- end }}
+spec:
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: {{ .Values.hub.pluginVolume.storageSize | default "10Mi" | quote }}
+{{- if .Values.hub.pluginVolume.storageClass }}
+{{- if (eq "-" .Values.hub.pluginVolume.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.hub.pluginVolume.storageClass }}"
+{{- end }}
+{{- end }}
+{{- end }}
