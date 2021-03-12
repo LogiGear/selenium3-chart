@@ -9,12 +9,14 @@ Since Selenium 4 is still under beta phase and not ready for production yet, thi
 ## TL;DR;
 
 ```console
-$ helm install stable/selenium
+$ helm repo add ta-chart https://chart.testarchitect.com
+$ helm repo update
+$ helm install my-grid ta-chart/selenium3
 ```
 
 ## Introduction
 
-This chart bootstraps a [Selenium](http://www.seleniumhq.org/) deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Selenium](http://www.seleniumhq.org/) 3 deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 ## Prerequisites
 
@@ -22,10 +24,12 @@ This chart bootstraps a [Selenium](http://www.seleniumhq.org/) deployment on a [
 
 ## Installing the Chart
 
-To install the chart with the release name `my-release`:
+To install the chart with the release name `my-grid`:
 
 ```console
-$ helm install --name my-release stable/selenium
+$ helm repo add ta-chart https://chart.testarchitect.com
+$ helm repo update
+$ helm install my-grid ta-chart/selenium3
 ```
 
 The command deploys Selenium on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -34,10 +38,10 @@ The command deploys Selenium on the Kubernetes cluster in the default configurat
 
 ## Uninstalling the Chart
 
-To uninstall/delete the `my-release` deployment:
+To uninstall/delete the `my-grid` deployment:
 
 ```console
-$ helm delete my-release
+$ helm delete my-grid
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
@@ -219,15 +223,15 @@ The following table lists the configurable parameters of the Selenium chart and 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
-$ helm install --name my-release \
+$ helm install my-grid \
   --set chrome.enabled=true \
-    stable/selenium
+  ta-chart/selenium3
 ```
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-$ helm install --name my-release -f values.yaml stable/selenium
+$ helm install my-grid -f values.yaml ta-chart/selenium3
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
