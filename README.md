@@ -1,4 +1,5 @@
 # Selenium
+[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/selenium3)](https://artifacthub.io/packages/search?repo=selenium3)
 
 ## MAINTENANCE NOTICE
 
