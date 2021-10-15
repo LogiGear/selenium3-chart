@@ -1,4 +1,6 @@
-Selenium Hub can be accessed via port {{ .Values.hub.port }} on the following
+selenium 3
+
+Hub can be accessed via port {{ .Values.hub.port }} on the following
 DNS name from within your cluster:
 
 - http://{{ template "selenium.hub.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.hub.port }}
