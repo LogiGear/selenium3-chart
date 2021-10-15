@@ -1,7 +1,7 @@
 {{- if .Values.hub.ingress.enabled -}}
 {{- $fullName := include "selenium.hub.fullname" . -}}
 {{- $ingressPath := .Values.hub.ingress.path -}}
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
